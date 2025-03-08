@@ -10,6 +10,7 @@ public class IdEncryptor {
     }
 
     public static Long decryptId(String encryptedId){
+        if(encryptedId == null) return  null;
         byte[] decodedBytes = Base64.getDecoder().decode(encryptedId);
         String id = new String(decodedBytes, StandardCharsets.UTF_8);
         return Long.parseLong(id);

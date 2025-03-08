@@ -33,7 +33,7 @@ public class CashMovement {
     private Double value;
 
     @ManyToOne
-    @JoinColumn(name = "cashMovements", nullable = false)
+    @JoinColumn(name = "cashbalance_id", nullable = false)
     private CashBalance cashBalance;
 
     @PrePersist

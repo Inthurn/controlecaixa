@@ -10,6 +10,7 @@ import br.com.inthurn.backend.repository.UserRepository;
 import br.com.inthurn.backend.transport.CreateUserDTO;
 import br.com.inthurn.backend.transport.LoginUserDTO;
 import br.com.inthurn.backend.transport.RecoveryJWTTokenDTO;
+import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class UserService {
 
     private final AuthenticationManager AUTHENTICATION_MANAGER;
@@ -26,15 +28,6 @@ public class UserService {
     private final RoleService ROLE_SERVICE;
     private final UserRepository USER_REPOSITORY;
     private final SecurityConfiguration SECURITY_CONFIGURATION;
-
-    public UserService(AuthenticationManager AUTHENTICATION_MANAGER, JwtTokenService JWT_TOKEN_SERVICE,
-                       RoleService ROLE_SERVICE, UserRepository USER_REPOSITORY, SecurityConfiguration SECURITY_CONFIGURATION) {
-        this.AUTHENTICATION_MANAGER = AUTHENTICATION_MANAGER;
-        this.JWT_TOKEN_SERVICE = JWT_TOKEN_SERVICE;
-        this.ROLE_SERVICE = ROLE_SERVICE;
-        this.USER_REPOSITORY = USER_REPOSITORY;
-        this.SECURITY_CONFIGURATION = SECURITY_CONFIGURATION;
-    }
 
     public RecoveryJWTTokenDTO authenticatUser(LoginUserDTO loginUserDTO) {
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =

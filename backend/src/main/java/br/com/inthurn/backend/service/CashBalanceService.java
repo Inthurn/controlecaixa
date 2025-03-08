@@ -6,19 +6,17 @@ import br.com.inthurn.backend.repository.CashBalanceRepository;
 import br.com.inthurn.backend.transport.request.CashBalanceRequestDTO;
 import br.com.inthurn.backend.transport.response.CashBalanceResponseDTO;
 import br.com.inthurn.backend.utils.IdEncryptor;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class CashBalanceService {
 
     private final CashBalanceRepository CASH_BALANCE_REPOSITORY;
-
-    public CashBalanceService(CashBalanceRepository CASH_BALANCE_REPOSITORY) {
-        this.CASH_BALANCE_REPOSITORY = CASH_BALANCE_REPOSITORY;
-    }
 
     public List<CashBalanceResponseDTO> getCashBalances() {
         try {
@@ -40,7 +38,6 @@ public class CashBalanceService {
         try {
             CashBalance cashBalance = convertDTOtoModel(cashBalanceRequestDTO);
             CASH_BALANCE_REPOSITORY.save(cashBalance);
-
         } catch (Exception e) {
             throw new RuntimeException("Não foi possível criar caixa.");
         }
@@ -70,7 +67,7 @@ public class CashBalanceService {
         return CashBalance.builder()
                 .id(IdEncryptor.decryptId(cashBalanceRequestDTO.id()))
                 .description(cashBalanceRequestDTO.description())
-                .initialBalance(cashBalanceRequestDTO.initialValue())
+                .initialBalance(cashBalanceRequestDTO.initialBalance())
                 .build();
     }
 
@@ -79,4 +76,10 @@ public class CashBalanceService {
                 cashBalance.getDescription(),
                 cashBalance.getInitialBalance());
     }
+
+    public CashBalance getCashBalance(Long id){
+        return CASH_BALANCE_REPOSITORY.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Não foi possível consultar Caixa informado."));
+    }
+
 }
