@@ -20,7 +20,7 @@ public class CashBalanceController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CashBalanceResponseDTO>> getCashBalances() throws Exception {
+    public ResponseEntity<List<CashBalanceResponseDTO>> getCashBalances() {
         List<CashBalanceResponseDTO> cashBalanceResponseDTOList = CASH_BALANCE_SERVICE.getCashBalances();
         return ResponseEntity.ok(cashBalanceResponseDTOList);
     }
