@@ -29,11 +29,12 @@ public class SecurityConfiguration {
     };
 
     public static final String[] ENDPOINTS_USER = {
-            ""
+            "/users/teste"
     };
 
     private static final String[] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
-            ""
+            "/cash-balance",
+            "/cash-balance/*"
     };
 
     @Bean
@@ -47,7 +48,6 @@ public class SecurityConfiguration {
                     .authorizeHttpRequests(auth -> auth
                             .requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED).permitAll()
                             .requestMatchers(ENDPOINTS_WITH_AUTHENTICATION_REQUIRED).authenticated()
-                            .requestMatchers(ENDPOINTS_USER).hasRole("USER")
                             .anyRequest().denyAll()
                     )
                     .addFilterBefore(USER_AUTHENTICATION_FILTER, UsernamePasswordAuthenticationFilter.class)

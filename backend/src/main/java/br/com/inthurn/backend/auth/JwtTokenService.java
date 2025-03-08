@@ -16,7 +16,7 @@ import java.time.ZonedDateTime;
 public class JwtTokenService {
 
     @Value("${app.secret-key}")
-    private String secretKey; //TODO: ALTERAR ANTES DE ENVIAR O COMMIT PARA VARIAVEL DE AMBIENTE
+    private String secretKey;
     private static final String ISSUER = "controlecaixa-api";
 
     public String generateToken(UserDetailsImpl user) {
