@@ -28,10 +28,6 @@ public class SecurityConfiguration {
             "/users/login",
     };
 
-    public static final String[] ENDPOINTS_USER = {
-            "/users/teste"
-    };
-
     private static final String[] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
             "/cash-balance",
             "/cash-balance/*"

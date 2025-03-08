@@ -4,10 +4,9 @@ import br.com.inthurn.backend.model.CashBalance;
 import br.com.inthurn.backend.repository.CashBalanceRepository;
 import br.com.inthurn.backend.transport.request.CashBalanceRequestDTO;
 import br.com.inthurn.backend.transport.response.CashBalanceResponseDTO;
+import br.com.inthurn.backend.utils.IdEncryptor;
 import org.springframework.stereotype.Service;
 
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +29,7 @@ public class CashBalanceService {
     }
 
     public CashBalanceResponseDTO getCashBalance(String id){
-        Optional<CashBalance> cashBalance = CASH_BALANCE_REPOSITORY.findById(decryptId(id));
+        Optional<CashBalance> cashBalance = CASH_BALANCE_REPOSITORY.findById(IdEncryptor.decryptId(id));
 
         return cashBalance.map(this::convertModelToDTO).orElseGet(() -> new CashBalanceResponseDTO(null, null, null));
     }
@@ -44,26 +43,16 @@ public class CashBalanceService {
         }
     }
 
-    private String encryptId(Long id) {
-        return Base64.getEncoder().encodeToString(id.toString().getBytes());
-    }
-
-    public Long decryptId(String encryptedId){
-        byte[] decodedBytes = Base64.getDecoder().decode(encryptedId);
-        String id = new String(decodedBytes, StandardCharsets.UTF_8);
-        return Long.parseLong(id);
-    }
-
     private CashBalance convertDTOtoModel(CashBalanceRequestDTO cashBalanceRequestDTO) {
         return CashBalance.builder()
-                .id(decryptId(cashBalanceRequestDTO.id()))
+                .id(IdEncryptor.decryptId(cashBalanceRequestDTO.id()))
                 .description(cashBalanceRequestDTO.description())
                 .initialBalance(cashBalanceRequestDTO.initialValue())
                 .build();
     }
 
     private CashBalanceResponseDTO convertModelToDTO(CashBalance cashBalance) {
-        return new CashBalanceResponseDTO(this.encryptId(cashBalance.getId()),
+        return new CashBalanceResponseDTO(IdEncryptor.encryptId(cashBalance.getId()),
                 cashBalance.getDescription(),
                 cashBalance.getInitialBalance());
     }
@@ -79,7 +68,7 @@ public class CashBalanceService {
 
     public void deleteCashBalance(String id) {
         try {
-            Optional<CashBalance> cashBalance = CASH_BALANCE_REPOSITORY.findById(decryptId(id));
+            Optional<CashBalance> cashBalance = CASH_BALANCE_REPOSITORY.findById(IdEncryptor.decryptId(id));
 
             cashBalance.ifPresent(CASH_BALANCE_REPOSITORY::delete);
         } catch (Exception e) {
