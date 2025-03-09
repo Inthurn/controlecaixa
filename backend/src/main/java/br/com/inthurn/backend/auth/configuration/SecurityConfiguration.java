@@ -29,10 +29,8 @@ public class SecurityConfiguration {
     };
 
     private static final String[] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
-            "/cash-balance",
-            "/cash-balance/*",
-            "/cash-movement",
-            "/cash-movement/*"
+            "/cash-balance/**",
+            "/cash-movement/**",
     };
 
     @Bean

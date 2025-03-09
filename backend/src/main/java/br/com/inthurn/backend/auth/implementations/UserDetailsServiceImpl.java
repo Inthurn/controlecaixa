@@ -1,6 +1,6 @@
 package br.com.inthurn.backend.auth.implementations;
 
-import br.com.inthurn.backend.model.User;
+import br.com.inthurn.backend.model.entity.User;
 import br.com.inthurn.backend.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,4 +1,4 @@
-package br.com.inthurn.backend.model;
+package br.com.inthurn.backend.model.entity;
 
 import br.com.inthurn.backend.enums.RoleName;
 import jakarta.persistence.*;

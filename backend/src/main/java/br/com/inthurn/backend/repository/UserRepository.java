@@ -1,6 +1,6 @@
 package br.com.inthurn.backend.repository;
 
-import br.com.inthurn.backend.model.User;
+import br.com.inthurn.backend.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

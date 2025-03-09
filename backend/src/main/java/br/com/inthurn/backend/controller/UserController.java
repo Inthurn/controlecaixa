@@ -1,9 +1,9 @@
 package br.com.inthurn.backend.controller;
 
 import br.com.inthurn.backend.service.UserService;
-import br.com.inthurn.backend.transport.CreateUserDTO;
-import br.com.inthurn.backend.transport.LoginUserDTO;
-import br.com.inthurn.backend.transport.RecoveryJWTTokenDTO;
+import br.com.inthurn.backend.model.transport.CreateUserDTO;
+import br.com.inthurn.backend.model.transport.LoginUserDTO;
+import br.com.inthurn.backend.model.transport.RecoveryJWTTokenDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

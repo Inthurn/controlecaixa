@@ -1,4 +1,4 @@
-package br.com.inthurn.backend.transport;
+package br.com.inthurn.backend.model.transport;
 
 import br.com.inthurn.backend.enums.RoleName;
 

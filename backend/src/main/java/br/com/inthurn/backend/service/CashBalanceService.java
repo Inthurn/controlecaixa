@@ -1,10 +1,10 @@
 package br.com.inthurn.backend.service;
 
 import br.com.inthurn.backend.exceptions.ResourceNotFoundException;
-import br.com.inthurn.backend.model.CashBalance;
+import br.com.inthurn.backend.model.entity.CashBalance;
 import br.com.inthurn.backend.repository.CashBalanceRepository;
-import br.com.inthurn.backend.transport.request.CashBalanceRequestDTO;
-import br.com.inthurn.backend.transport.response.CashBalanceResponseDTO;
+import br.com.inthurn.backend.model.transport.request.CashBalanceRequestDTO;
+import br.com.inthurn.backend.model.transport.response.CashBalanceResponseDTO;
 import br.com.inthurn.backend.utils.IdEncryptor;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,18 +20,22 @@ public class CashBalanceService {
 
     public List<CashBalanceResponseDTO> getCashBalances() {
         try {
-            List<CashBalance> cashBalances = CASH_BALANCE_REPOSITORY.findAll();
-            return cashBalances.stream().map(this::convertModelToDTO).toList();
+            return CASH_BALANCE_REPOSITORY.findAll().stream().map(this::convertModelToDTO).toList();
+
         } catch (Exception e) {
             throw new ResourceNotFoundException("Não foi possível consultar os caixas.");
         }
     }
 
     public CashBalanceResponseDTO getCashBalance(String id) {
-        Optional<CashBalance> cashBalance = CASH_BALANCE_REPOSITORY.findById(IdEncryptor.decryptId(id));
-        return cashBalance.map(this::convertModelToDTO)
-                .orElseThrow(() -> new ResourceNotFoundException("Caixa não encontrado: " + id));
+        try {
+            return CASH_BALANCE_REPOSITORY.findById(IdEncryptor.decryptId(id))
+                    .map(this::convertModelToDTO)
+                    .orElseThrow(() -> new ResourceNotFoundException("Caixa não encontrado: " + id));
 
+        } catch (Exception e) {
+            throw new ResourceNotFoundException("Não foi possível consultar o caixa informado");
+        }
     }
 
     public void addCashBalance(CashBalanceRequestDTO cashBalanceRequestDTO) {
@@ -77,7 +81,7 @@ public class CashBalanceService {
                 cashBalance.getInitialBalance());
     }
 
-    public CashBalance getCashBalance(Long id){
+    public CashBalance getCashBalance(Long id) {
         return CASH_BALANCE_REPOSITORY.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Não foi possível consultar Caixa informado."));
     }

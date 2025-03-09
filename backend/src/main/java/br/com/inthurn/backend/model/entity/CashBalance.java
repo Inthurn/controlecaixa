@@ -1,4 +1,4 @@
-package br.com.inthurn.backend.model;
+package br.com.inthurn.backend.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,6 +1,6 @@
 package br.com.inthurn.backend.auth.implementations;
 
-import br.com.inthurn.backend.model.User;
+import br.com.inthurn.backend.model.entity.User;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

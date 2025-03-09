@@ -1,8 +1,8 @@
 package br.com.inthurn.backend.controller;
 
 import br.com.inthurn.backend.service.CashBalanceService;
-import br.com.inthurn.backend.transport.request.CashBalanceRequestDTO;
-import br.com.inthurn.backend.transport.response.CashBalanceResponseDTO;
+import br.com.inthurn.backend.model.transport.request.CashBalanceRequestDTO;
+import br.com.inthurn.backend.model.transport.response.CashBalanceResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

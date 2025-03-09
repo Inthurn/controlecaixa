@@ -2,7 +2,7 @@ package br.com.inthurn.backend.auth;
 
 import br.com.inthurn.backend.auth.configuration.SecurityConfiguration;
 import br.com.inthurn.backend.auth.implementations.UserDetailsImpl;
-import br.com.inthurn.backend.model.User;
+import br.com.inthurn.backend.model.entity.User;
 import br.com.inthurn.backend.repository.UserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

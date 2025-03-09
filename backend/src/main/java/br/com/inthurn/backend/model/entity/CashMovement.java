@@ -1,4 +1,4 @@
-package br.com.inthurn.backend.model;
+package br.com.inthurn.backend.model.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 @Entity(name = "CashMovement")
 @Table(name = "CashMovements")
@@ -21,7 +22,7 @@ public class CashMovement {
     private Long id;
 
     @Column(nullable = false)
-    private Date date;
+    private LocalDate date;
 
     @Column(nullable = false)
     private String type;
