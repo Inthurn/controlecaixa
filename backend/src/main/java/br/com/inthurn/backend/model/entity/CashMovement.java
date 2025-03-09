@@ -1,11 +1,13 @@
 package br.com.inthurn.backend.model.entity;
 
+import br.com.inthurn.backend.enums.CashMovementType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -24,14 +26,15 @@ public class CashMovement {
     @Column(nullable = false)
     private LocalDate date;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String type;
+    private CashMovementType type;
 
     @Column(nullable = false)
     private String description;
 
     @Column(nullable = false)
-    private Double value;
+    private BigDecimal value;
 
     @ManyToOne
     @JoinColumn(name = "cashbalance_id", nullable = false)
@@ -39,6 +42,6 @@ public class CashMovement {
 
     @PrePersist
     public void prePersist() {
-        if (this.value == null) this.value = 0.0;
+        if (this.value == null) this.value = BigDecimal.ZERO;
     }
 }

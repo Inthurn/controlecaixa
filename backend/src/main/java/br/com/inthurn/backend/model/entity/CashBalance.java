@@ -3,6 +3,7 @@ package br.com.inthurn.backend.model.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity(name = "CashBalance")
@@ -21,13 +22,13 @@ public class CashBalance {
     private String description;
 
     @Column(nullable = false)
-    private Double initialBalance;
+    private BigDecimal initialBalance;
 
     @OneToMany(mappedBy = "cashBalance", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CashMovement> cashMovements;
 
     @PrePersist
     public void prePersist() {
-        if (this.initialBalance == null) this.initialBalance = 0.0;
+        if (this.initialBalance == null) this.initialBalance = BigDecimal.ZERO;
     }
 }

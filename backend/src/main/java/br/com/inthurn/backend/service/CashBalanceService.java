@@ -85,5 +85,4 @@ public class CashBalanceService {
         return CASH_BALANCE_REPOSITORY.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Não foi possível consultar Caixa informado."));
     }
-
 }
