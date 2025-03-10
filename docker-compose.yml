@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: controlecaixa
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    networks:
+      - app_network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+
+  app:
+    image: controlecaixa
+    container_name: app_controlecaixa
+    build:
+      context: ./backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/controlecaixa
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update 
+      APP_SECRET_KEY: mysecretkey
+      APP_SECRET_ISSUER: controlecaixaapi
+      SERVER_PORT: 8080
+      SERVER_ADDRESS: 0.0.0.0
+    networks:
+      - app_network
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    restart: always
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
+
