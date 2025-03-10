@@ -17,13 +17,14 @@ public class JwtTokenService {
 
     @Value("${app.secret-key}")
     private String secretKey;
-    private static final String ISSUER = "controlecaixa-api";
+    @Value("${app.secret-key}")
+    private String issuer;
 
     public String generateToken(UserDetailsImpl user) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secretKey);
             return JWT.create()
-                    .withIssuer(ISSUER)
+                    .withIssuer(issuer)
                     .withIssuedAt(creationDate())
                     .withExpiresAt(expirationDate())
                     .withSubject(user.getUsername())
@@ -38,7 +39,7 @@ public class JwtTokenService {
         try {
             Algorithm algorithm = Algorithm.HMAC256(secretKey);
             return JWT.require(algorithm)
-                    .withIssuer(ISSUER)
+                    .withIssuer(issuer)
                     .build()
                     .verify(token)
                     .getSubject();
