@@ -26,11 +26,13 @@ public class SecurityConfiguration {
     }
 
     public static final String[] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {
-            "/users/**",
+            "/users",
             "/users/login",
     };
 
     private static final String[] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
+            "/cash-balance",
+            "/cash-movement",
             "/cash-balance/**",
             "/cash-movement/**",
     };
@@ -74,6 +76,7 @@ public class SecurityConfiguration {
                 registry.addMapping("/**")
                         .allowedOrigins("http://localhost:3000")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
                         .allowCredentials(true);
             }
         };
