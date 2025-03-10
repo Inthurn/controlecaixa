@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "50ba2c3c-f8a9-4f0c-a8ea-02190e74ea40",
+		"name": "controlecaixa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18269612"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "createUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mike@teste.com\",\n    \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticateUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mike@teste.com\",\n    \"password\": \"12345\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cash-balance",
+			"item": [
+				{
+					"name": "addCashBalance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb250cm9sZWNhaXhhLWFwaSIsImlhdCI6MTc0MTQ2MDgzMCwiZXhwIjoxNzQxNDYxNzMwLCJzdWIiOiJtaWtlQHRlc3RlLmNvbSJ9.CAuwWPPcyJZpa2ZImivqoDggbYIdMJ3U2HoazVy4iww",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"CAIXA 1\",\n    \"initialBalance\": 100.00\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cash-balance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cash-balance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCashBalances",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb250cm9sZWNhaXhhLWFwaSIsImlhdCI6MTc0MTQ2NTA0NywiZXhwIjoxNzQxNDY1OTQ3LCJzdWIiOiJtaWtlQHRlc3RlLmNvbSJ9.hmR2oAjpRQzExi3S-n7y5Ob8pc8JSuxlyfmCQcoZRqM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"CAIXA 2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cash-balance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cash-balance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCashBalance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb250cm9sZWNhaXhhLWFwaSIsImlhdCI6MTc0MTQ2NTA0NywiZXhwIjoxNzQxNDY1OTQ3LCJzdWIiOiJtaWtlQHRlc3RlLmNvbSJ9.hmR2oAjpRQzExi3S-n7y5Ob8pc8JSuxlyfmCQcoZRqM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cash-balance/Mw==",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cash-balance",
+								"Mw=="
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCashBalance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb250cm9sZWNhaXhhLWFwaSIsImlhdCI6MTc0MTQ2NTA0NywiZXhwIjoxNzQxNDY1OTQ3LCJzdWIiOiJtaWtlQHRlc3RlLmNvbSJ9.hmR2oAjpRQzExi3S-n7y5Ob8pc8JSuxlyfmCQcoZRqM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cash-balance/MQ==",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cash-balance",
+								"MQ=="
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCashBalance",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb250cm9sZWNhaXhhLWFwaSIsImlhdCI6MTc0MTQ2NTA0NywiZXhwIjoxNzQxNDY1OTQ3LCJzdWIiOiJtaWtlQHRlc3RlLmNvbSJ9.hmR2oAjpRQzExi3S-n7y5Ob8pc8JSuxlyfmCQcoZRqM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"Mw==\",\n    \"description\": \"CAIXA 5\",\n    \"initialValue\": 200.0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cash-balance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cash-balance"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cash-movement",
+			"item": [
+				{
+					"name": "addCashMovement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb250cm9sZWNhaXhhLWFwaSIsImlhdCI6MTc0MTU0MzIzNywiZXhwIjoxNzQxNTQ0MTM3LCJzdWIiOiJtaWtlQHRlc3RlLmNvbSJ9.6vhoBusF0NYrekK9Z0wrh_Fm0yCxM_6ZhbIpQDrbocM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"date\": \"2025-01-30\",\n    \"type\": \"OUT\",\n    \"description\": \"lorem\",\n    \"value\": 125.0,\n    \"cashBalanceId\": \"MQ==\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cash-movement",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cash-movement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCashMovementsByCashBalance",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb250cm9sZWNhaXhhLWFwaSIsImlhdCI6MTc0MTUzMTY1NCwiZXhwIjoxNzQxNTMyNTU0LCJzdWIiOiJtaWtlQHRlc3RlLmNvbSJ9.bu4jMbMutKXR3wjlMztiqCtYwHWx3LnthE4z_d97nX8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cash-movement/MQ==",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cash-movement",
+								"MQ=="
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCashMovementsByMonth",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJjb250cm9sZWNhaXhhLWFwaSIsImlhdCI6MTc0MTUzNTk0NywiZXhwIjoxNzQxNTM2ODQ3LCJzdWIiOiJtaWtlQHRlc3RlLmNvbSJ9.5E3w2UZEikth8dDV3qP9DY7oZNTtpptedkQU1WGuPas",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/cash-movement/movements/2025-10?cash-balance=MQ==",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"cash-movement",
+								"movements",
+								"2025-10"
+							],
+							"query": [
+								{
+									"key": "cash-balance",
+									"value": "MQ=="
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
